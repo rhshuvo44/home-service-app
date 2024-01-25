@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, Image, StyleSheet, View } from "react-native";
+import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import Heading from "../../Components/Heading";
 import Colors from "../../Utils/Colors";
 import GlobalApi from "../../Utils/GlobalApi";
@@ -19,20 +19,26 @@ export default function Category() {
         numColumns={4}
         // horizontal={true}
         // showsHorizontalScrollIndicator={false}
-        renderItem={({ item, index }) => (
-          <View style={styles.container}>
-            <View style={styles.iconContainer}>
-              <Image
-                style={{ width: 30, height: 30 }}
-                source={{ uri: item?.icon?.url }}
-              />
+        renderItem={({ item, index }) =>
+          index <= 3 && (
+            <View style={styles.container}>
+              <View style={styles.iconContainer}>
+                <Image
+                  style={{ width: 30, height: 30 }}
+                  source={{ uri: item?.icon?.url }}
+                />
+              </View>
+              <Text style={{ fontFamily: "outfit-medium", marginTop: 5 }}>
+                {item?.name}
+              </Text>
             </View>
-          </View>
-        )}
+          )
+        }
       />
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
