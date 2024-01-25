@@ -1,8 +1,8 @@
 import { useUser } from "@clerk/clerk-expo";
+import { FontAwesome } from "@expo/vector-icons";
 import React from "react";
 import { Image, StyleSheet, Text, TextInput, View } from "react-native";
 import Colors from "../../Utils/Colors";
-import { FontAwesome } from "@expo/vector-icons";
 
 export default function Header() {
   const { user, isLoading } = useUser();
@@ -14,8 +14,16 @@ export default function Header() {
           <View style={styles.profileContainer}>
             <Image source={{ uri: user?.imageUrl }} style={styles.userImage} />
             <View style={{ marginTop: 10 }}>
-              <Text style={{ color: Colors.WHITE }}>Welcome,</Text>
-              <Text style={{ color: Colors.WHITE, fontSize: 20 }}>
+              <Text style={{ color: Colors.WHITE, fontFamily: "outfit" }}>
+                Welcome,
+              </Text>
+              <Text
+                style={{
+                  color: Colors.WHITE,
+                  fontSize: 20,
+                  fontFamily: "outfit-medium",
+                }}
+              >
                 {user?.fullName}
               </Text>
             </View>
@@ -83,5 +91,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     width: "85%",
     fontSize: 16,
+    fontFamily: "outfit",
   },
 });
