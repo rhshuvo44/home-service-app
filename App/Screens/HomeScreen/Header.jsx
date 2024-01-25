@@ -28,6 +28,12 @@ export default function Header() {
             placeholderTextColor={Colors.PRIMARY}
             style={styles.textInput}
           />
+          <FontAwesome
+            style={styles.searchBtn}
+            name="search"
+            size={24}
+            color={Colors.PRIMARY}
+          />
         </View>
       </View>
     )
@@ -59,6 +65,16 @@ const styles = StyleSheet.create({
   },
   searchBarContainer: {
     marginTop: 15,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+  },
+  searchBtn: {
+    backgroundColor: Colors.WHITE,
+    padding: 7,
+    borderRadius: 8,
+    marginBottom: 10,
   },
   textInput: {
     padding: 7,
@@ -66,5 +82,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.WHITE,
     borderRadius: 8,
     width: "85%",
+    fontSize: 16,
   },
 });
