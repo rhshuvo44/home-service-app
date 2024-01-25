@@ -16,7 +16,23 @@ const getSlider = async () => {
   const result = await request(MASTER_URL, query);
   return result;
 };
+const getCategory = async () => {
+  const query = gql`
+    query getCategory {
+      categories {
+        id
+        name
+        icon {
+          url
+        }
+      }
+    }
+  `;
+  const result = await request(MASTER_URL, query);
+  return result;
+};
 
 export default {
   getSlider,
+  getCategory,
 };
