@@ -1,8 +1,10 @@
-import { StatusBar, StyleSheet, Text, View } from "react-native";
-import Login from "./App/Screens/LoginScreen/Login";
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
+import { NavigationContainer } from "@react-navigation/native";
 import Constants from "expo-constants";
 import * as SecureStore from "expo-secure-store";
+import { StatusBar, StyleSheet, View } from "react-native";
+import TabNavigation from "./App/Navigations/TabNavigation";
+import Login from "./App/Screens/LoginScreen/Login";
 
 const tokenCache = {
   async getToken(key) {
@@ -28,7 +30,9 @@ export default function App() {
     >
       <View style={styles.container}>
         <SignedIn>
-          <Text>You are Signed in</Text>
+          <NavigationContainer>
+            <TabNavigation />
+          </NavigationContainer>
         </SignedIn>
         <SignedOut>
           <Login />
