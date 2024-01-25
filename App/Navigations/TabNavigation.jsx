@@ -40,7 +40,7 @@ export default function TabNavigation() {
             </Text>
           ),
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome name="bookmark" size={24} color="black" />
+            <FontAwesome name="bookmark" size={size} color={color} />
           ),
         }}
       />
@@ -54,7 +54,7 @@ export default function TabNavigation() {
             </Text>
           ),
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome name="user-circle" size={24} color="black" />
+            <FontAwesome name="user-circle" size={size} color={color} />
           ),
         }}
       />
