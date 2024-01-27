@@ -74,9 +74,40 @@ const getBusinessListByCategory = async (category) => {
       }
     }
   }
-  
   `;
   const result = await request(MASTER_URL, query);
+  return result;
+};
+const createBooking = async (data) => {
+  const mutationQuery =
+    gql`
+    mutation createBooking {
+      createBooking(
+        data: {
+          booking: Booked
+          businessList: { connect: { id: "` +
+    data.businessId +
+    `" } }
+          date: "` +
+    data.date +
+    `"
+          time: "` +
+    data.time +
+    `"
+          userEmail: "` +
+    data.userEmail +
+    `"
+          userName: "` +
+    data.userName +
+    `"
+        }
+      )
+      publishManyBookings(to: PUBLISHED) {
+        count
+      }
+    }
+  `;
+  const result = await request(MASTER_URL, mutationQuery);
   return result;
 };
 
@@ -85,4 +116,5 @@ export default {
   getCategory,
   getBusinessList,
   getBusinessListByCategory,
+  createBooking,
 };

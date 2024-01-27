@@ -129,7 +129,10 @@ export default function BusinessDetails() {
           </TouchableOpacity>
         </View>
         <Modal animationType="slide" visible={showModal}>
-          <BookingModel hideModal={() => setShowModal(false)} />
+          <BookingModel
+            id={business.id}
+            hideModal={() => setShowModal(false)}
+          />
         </Modal>
       </View>
     )

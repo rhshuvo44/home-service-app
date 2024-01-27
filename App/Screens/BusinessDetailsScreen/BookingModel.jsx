@@ -1,3 +1,4 @@
+import { useUser } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import {
@@ -7,18 +8,21 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  ToastAndroid,
   TouchableOpacity,
   View,
 } from "react-native";
 import CalendarPicker from "react-native-calendar-picker";
 import Heading from "../../Components/Heading";
 import Colors from "../../Utils/Colors";
+import GlobalApi from "../../Utils/GlobalApi";
 
-export default function BookingModel({ hideModal }) {
+export default function BookingModel({ id, hideModal }) {
   const [timeList, setTimeList] = useState();
   const [selectedTime, setSelectedTime] = useState();
   const [selectedDate, setSelectedDate] = useState();
   const [note, setNote] = useState();
+  const { user } = useUser();
 
   useEffect(() => {
     getTime();
@@ -42,6 +46,24 @@ export default function BookingModel({ hideModal }) {
       });
     }
     setTimeList(timeList);
+  };
+
+  const createNewBooking = async () => {
+    if (!selectedTime || !selectedDate) {
+      ToastAndroid.show("Please select Date and Time", ToastAndroid.LONG);
+      return;
+    }
+    const data = {
+      businessId: "D",
+      date: selectedDate,
+      time: selectedTime,
+      userEmail: user?.fullName,
+      userName: user?.primaryEmailAddress,
+    };
+    GlobalApi.createBooking(data).then((res) => {
+      ToastAndroid.show("Booking Create Successfully!", ToastAndroid.LONG);
+      hideModal();
+    });
   };
   return (
     <ScrollView>
@@ -107,7 +129,10 @@ export default function BookingModel({ hideModal }) {
             onChange={(e) => setNote(e)}
           />
         </View>
-        <TouchableOpacity style={{ marginTop: 10 }}>
+        <TouchableOpacity
+          onPress={() => createNewBooking()}
+          style={{ marginTop: 10 }}
+        >
           <Text style={styles.confirmBtn}>Confirm & Book</Text>
         </TouchableOpacity>
       </KeyboardAvoidingView>
