@@ -1,17 +1,19 @@
 import React from "react";
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import Header from "./Header";
 import Slider from "./Slider";
 import Category from "./Category";
+import BusinessList from "./BusinessList";
 
 export default function Home() {
   return (
     <View>
       <Header />
-      <View style={{ padding: 20 }}>
+      <ScrollView style={{ padding: 20 }}>
         <Slider />
         <Category />
-      </View>
+        <BusinessList />
+      </ScrollView>
     </View>
   );
 }

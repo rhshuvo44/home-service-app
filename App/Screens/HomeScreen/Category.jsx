@@ -17,8 +17,6 @@ export default function Category() {
       <FlatList
         data={category}
         numColumns={4}
-        // horizontal={true}
-        // showsHorizontalScrollIndicator={false}
         renderItem={({ item, index }) =>
           index <= 3 && (
             <View style={styles.container}>
