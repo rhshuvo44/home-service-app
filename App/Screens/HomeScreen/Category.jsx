@@ -29,12 +29,12 @@ export default function Category() {
         renderItem={({ item, index }) =>
           index <= 3 && (
             <TouchableOpacity
+              style={styles.container}
               onPress={() =>
                 navigation.push("business-list", {
                   category: item?.name,
                 })
               }
-              style={styles.container}
             >
               <View style={styles.iconContainer}>
                 <Image
