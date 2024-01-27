@@ -1,8 +1,9 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import React from "react";
+import React, { useState } from "react";
 import {
   Image,
+  Modal,
   ScrollView,
   StyleSheet,
   Text,
@@ -12,8 +13,10 @@ import {
 import Colors from "../../Utils/Colors";
 import BusinessAboutMe from "./BusinessAboutMe";
 import BusinessPhotos from "./BusinessPhotos";
+import BookingModel from "./BookingModel";
 
 export default function BusinessDetails() {
+  const [showModal, setShowModal] = useState(false);
   const business = useRoute().params.business;
   const navigation = useNavigation();
   return (
@@ -110,7 +113,7 @@ export default function BusinessDetails() {
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.goBack()}
+            onPress={() => setShowModal(true)}
             style={styles.bookingBtn}
           >
             <Text
@@ -125,6 +128,9 @@ export default function BusinessDetails() {
             </Text>
           </TouchableOpacity>
         </View>
+        <Modal animationType="slide" visible={showModal}>
+          <BookingModel hideModal={() => setShowModal(false)} />
+        </Modal>
       </View>
     )
   );
