@@ -1,8 +1,8 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
-import React from "react";
-import Colors from "../../Utils/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import React from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import Colors from "../../Utils/Colors";
 
 export default function BusinessListItem({ business }) {
   const navigate = useNavigation();
@@ -15,12 +15,12 @@ export default function BusinessListItem({ business }) {
         })
       }
     >
-      <Image source={{ uri: business?.images[0]?.url }} style={styles.image} />
+      <Image source={{ uri: business?.image[0]?.url }} style={styles.image} />
       <View style={styles.subContainer}>
         <Text
           style={{
             fontFamily: "outfit",
-            color: Colors.LIGHT_GRAY,
+            color: Colors.PRIMARY,
             fontSize: 15,
           }}
         >
@@ -32,15 +32,11 @@ export default function BusinessListItem({ business }) {
         <Text
           style={{
             fontFamily: "outfit",
-            color: Colors.LIGHT_GRAY,
-            fontSize: 16,
+            color: Colors.BLACK,
+            fontSize: 11,
           }}
         >
-          <Ionicons
-            name="ios-location-sharp"
-            size={20}
-            color={Colors.PRIMARY}
-          />
+          <Ionicons name="location-sharp" size={12} color={Colors.PRIMARY} />
           {business?.address}
         </Text>
       </View>

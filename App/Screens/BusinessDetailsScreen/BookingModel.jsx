@@ -55,7 +55,7 @@ export default function BookingModel({ id, hideModal }) {
     }
     const data = {
       businessId: "D",
-      date: selectedDate,
+      date: moment(selectedDate).format("DD-MMM-yyyy"),
       time: selectedTime,
       userEmail: user?.fullName,
       userName: user?.primaryEmailAddress,
