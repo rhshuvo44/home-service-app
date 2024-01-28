@@ -17,12 +17,14 @@ import BookingModel from "./BookingModel";
 
 export default function BusinessDetails() {
   const [showModal, setShowModal] = useState(false);
+
   const business = useRoute().params.business;
+
   const navigation = useNavigation();
   return (
     business && (
       <View>
-        <ScrollView style={{ height: "93%" }}>
+        <ScrollView style={{ height: "88%" }}>
           <TouchableOpacity
             onPress={() => navigation.goBack()}
             style={styles.backBtnContainer}
@@ -35,7 +37,7 @@ export default function BusinessDetails() {
           </TouchableOpacity>
           <Image
             style={{ width: "100%", height: 300 }}
-            source={{ uri: business?.images[0]?.url }}
+            source={{ uri: business?.image[0]?.url }}
           />
           <View style={styles.infoContainer}>
             <Text style={{ fontFamily: "outfit-bold", fontSize: 25 }}>
@@ -56,12 +58,12 @@ export default function BusinessDetails() {
             <Text
               style={{
                 fontFamily: "outfit",
-                color: Colors.LIGHT_GRAY,
+                color: Colors.BLACK,
                 fontSize: 16,
               }}
             >
               <Ionicons
-                name="ios-location-sharp"
+                name="location-sharp"
                 size={20}
                 color={Colors.PRIMARY}
               />

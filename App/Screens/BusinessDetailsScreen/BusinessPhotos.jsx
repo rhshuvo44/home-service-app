@@ -7,7 +7,7 @@ export default function BusinessPhotos({ business }) {
     <View>
       <Heading text="Photos" />
       <FlatList
-        data={business.images}
+        data={business.image}
         numColumns={2}
         renderItem={({ item }) => (
           <Image

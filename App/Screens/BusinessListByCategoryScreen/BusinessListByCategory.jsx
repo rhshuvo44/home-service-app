@@ -1,9 +1,10 @@
 import { useRoute } from "@react-navigation/native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, Text, View } from "react-native";
 import PageHeading from "../../Components/PageHeading";
 import Colors from "../../Utils/Colors";
 import BusinessListItem from "./BusinessListItem";
+import GlobalApi from "../../Utils/GlobalApi";
 export default function BusinessListByCategory() {
   const [businessList, setBusinessList] = useState([]);
   const param = useRoute().params;

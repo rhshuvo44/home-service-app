@@ -1,18 +1,19 @@
 import React, { useState } from "react";
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import Colors from "../../Utils/Colors";
+import Heading from "../../Components/Heading";
 
 export default function BusinessAboutMe({ business }) {
   const [readMore, setReadMore] = useState(false);
 
   return (
-    <View>
+    <View style={{padding:20}}>
       <Heading text="About Me" />
       <Text
         style={{
           fontFamily: "outfit",
           lineHeight: 28,
-          color: Colors.LIGHT_GRAY,
+          color: "#049",
           fontSize: 16,
         }}
         numberOfLines={readMore ? 20 : 5}
