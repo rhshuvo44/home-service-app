@@ -67,7 +67,7 @@ export default function Profile() {
         <FlatList
           data={profileMenu}
           renderItem={({ item, index }) => (
-            <View
+            <TouchableOpacity
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -80,7 +80,7 @@ export default function Profile() {
               <Text style={{ fontFamily: "outfit", fontSize: 20 }}>
                 {item.name}
               </Text>
-            </View>
+            </TouchableOpacity>
           )}
         />
       </View>

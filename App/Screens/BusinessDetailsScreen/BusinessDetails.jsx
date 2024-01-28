@@ -3,6 +3,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
   Image,
+  Linking,
   Modal,
   ScrollView,
   StyleSheet,
@@ -11,9 +12,9 @@ import {
   View,
 } from "react-native";
 import Colors from "../../Utils/Colors";
+import BookingModel from "./BookingModel";
 import BusinessAboutMe from "./BusinessAboutMe";
 import BusinessPhotos from "./BusinessPhotos";
-import BookingModel from "./BookingModel";
 
 export default function BusinessDetails() {
   const [showModal, setShowModal] = useState(false);
@@ -21,6 +22,13 @@ export default function BusinessDetails() {
   const business = useRoute().params.business;
 
   const navigation = useNavigation();
+  const onMessageBtnClick = () => {
+    Linking.openURL(
+      "mailto:" +
+        business?.email +
+        "?subject=I am looking for your Service&body=Hi There,"
+    );
+  };
   return (
     business && (
       <View>
@@ -100,7 +108,7 @@ export default function BusinessDetails() {
           }}
         >
           <TouchableOpacity
-            onPress={() => navigation.goBack()}
+            onPress={() => onMessageBtnClick}
             style={styles.messageBtn}
           >
             <Text
