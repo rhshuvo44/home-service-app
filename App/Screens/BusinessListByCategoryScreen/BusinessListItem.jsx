@@ -1,11 +1,11 @@
-import { Ionicons } from "@expo/vector-icons";
+import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Colors from "../../Utils/Colors";
-
-export default function BusinessListItem({ business }) {
+export default function BusinessListItem({ business, booking }) {
   const navigate = useNavigation();
+
   return (
     <TouchableOpacity
       style={styles.container}
@@ -29,6 +29,35 @@ export default function BusinessListItem({ business }) {
         <Text style={{ fontFamily: "outfit-bold", fontSize: 19 }}>
           {business?.name}
         </Text>
+
+        {booking?.id ? (
+          <Text
+            style={{
+              fontSize: 20,
+              fontFamily: "outfit",
+              padding: 3,
+              color: Colors.WHITE,
+              backgroundColor: Colors.PRIMARY,
+              borderRadius: 7,
+              alignSelf: "flex-start",
+              paddingHorizontal: 7,
+            }}
+          >
+            {booking?.bookingStatus}
+          </Text>
+        ) : null}
+        {booking?.id ? (
+          <Text
+            style={{
+              fontFamily: "outfit",
+              color: Colors.PRIMARY,
+              fontSize: 15,
+            }}
+          >
+            <AntDesign name="calendar" size={24} color="black" />
+            {booking?.date} at {booking?.time}
+          </Text>
+        ) : null}
         <Text
           style={{
             fontFamily: "outfit",
