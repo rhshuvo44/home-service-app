@@ -53,7 +53,7 @@ export default function BusinessDetails() {
               >
                 {business?.contactPerson}
               </Text>
-              <Text>{business?.category.name}</Text>
+              <Text>{business?.category?.name}</Text>
             </View>
             <Text
               style={{

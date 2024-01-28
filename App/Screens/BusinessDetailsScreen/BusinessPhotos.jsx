@@ -4,7 +4,7 @@ import Heading from "../../Components/Heading";
 
 export default function BusinessPhotos({ business }) {
   return (
-    <View>
+    <View style={{ padding: 20 }}>
       <Heading text="Photos" />
       <FlatList
         data={business.image}

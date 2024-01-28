@@ -16,6 +16,7 @@ import CalendarPicker from "react-native-calendar-picker";
 import Heading from "../../Components/Heading";
 import Colors from "../../Utils/Colors";
 import GlobalApi from "../../Utils/GlobalApi";
+import moment from "moment";
 
 export default function BookingModel({ id, hideModal }) {
   const [timeList, setTimeList] = useState();
@@ -29,7 +30,7 @@ export default function BookingModel({ id, hideModal }) {
   }, []);
   const getTime = () => {
     const timeList = [];
-    for (let i = 8; i < 12; i++) {
+    for (let i = 8; i < 11; i++) {
       timeList.push({
         time: i + ":00 AM",
       });
@@ -54,11 +55,11 @@ export default function BookingModel({ id, hideModal }) {
       return;
     }
     const data = {
-      businessId: "D",
+      businessId: id,
       date: moment(selectedDate).format("DD-MMM-yyyy"),
       time: selectedTime,
-      userEmail: user?.fullName,
-      userName: user?.primaryEmailAddress,
+      userEmail: user?.primaryEmailAddress.emailAddress,
+      userName: user?.fullName,
     };
     GlobalApi.createBooking(data).then((res) => {
       ToastAndroid.show("Booking Create Successfully!", ToastAndroid.LONG);
